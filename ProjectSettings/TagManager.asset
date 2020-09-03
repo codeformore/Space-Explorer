@@ -6,6 +6,8 @@ TagManager:
   tags:
   - item
   - projectile
+  - object
+  - projectileP
   layers:
   - Default
   - TransparentFX

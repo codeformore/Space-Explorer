@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
@@ -17,11 +16,24 @@ public class PlayerInventory : MonoBehaviour
     public GameObject dropItemPrefab;
     private Rigidbody2D rig;
 
+    //Events
+    public delegate void InventoryChangeHandeler();
+    public static event InventoryChangeHandeler InventoryChange;
+
     void Start()
     {
 
         rig = GetComponent<Rigidbody2D>();
         rig.mass = shipWeight;
+
+    }
+
+    //Event Functions
+    private void InventoryChanged() 
+    {
+
+        if (InventoryChange != null)
+            InventoryChange();
 
     }
 
@@ -80,12 +92,14 @@ public class PlayerInventory : MonoBehaviour
             
             inventory.Add(itemToAdd);
             UpdateWeight();
+            InventoryChanged();
             return true;
 
         }
         else
         {
 
+            InventoryChanged();
             return false;
 
         }
@@ -112,12 +126,14 @@ public class PlayerInventory : MonoBehaviour
             if (inventory.Count - 1 == i)
             {
 
+                InventoryChanged();
                 return false;
 
             } 
 
         }
 
+        InventoryChanged();
         return true;
 
     }
@@ -142,12 +158,14 @@ public class PlayerInventory : MonoBehaviour
             if (inventory.Count - 1 == i)
             {
 
+                InventoryChanged();
                 return false;
 
             } 
 
         }
-
+        
+        InventoryChanged();
         return true;
 
     }

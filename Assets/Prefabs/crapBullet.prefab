@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 358208380555875394}
   m_Layer: 0
   m_Name: crapBullet
-  m_TagString: Untagged
+  m_TagString: projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -118,7 +118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeTime: 2
-  bulletSpeed: 500
+  bulletSpeed: 1000
   damage: 5
 --- !u!61 &358208380555875394
 BoxCollider2D:

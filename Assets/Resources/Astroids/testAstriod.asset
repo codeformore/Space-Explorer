@@ -15,10 +15,11 @@ MonoBehaviour:
   id: 0
   astroidName: Test Astroid
   healthRange: {x: 10, y: 20}
-  massScalar: 10
+  massScalar: 1000
   loots:
   - itemToSpawn: 0
-    chance: 80
+    chance: 60
   sprites:
   - {fileID: 21300000, guid: 3e048e23e56599d4590f2c8e93593c39, type: 3}
   - {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10915, guid: 0000000000000000f000000000000000, type: 0}
