@@ -7,6 +7,7 @@ public class ShieldUI : MonoBehaviour
 {
     
     private Slider shieldBar;
+    public Text shieldBarText;
     public PlayerVitals vitals;
 
     void Start()
@@ -23,6 +24,8 @@ public class ShieldUI : MonoBehaviour
 
         if (shieldBar.value != vitals.ShieldHealth)
             shieldBar.value = vitals.ShieldHealth;
+
+        shieldBarText.text = vitals.ShieldHealth + "/" + vitals.MaxShieldHealth;
 
     }
 

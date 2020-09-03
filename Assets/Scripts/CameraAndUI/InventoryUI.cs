@@ -9,12 +9,22 @@ public class InventoryUI : MonoBehaviour
     public GameObject[] displayObjects;
     public GameObject template;
     public GameObject contentPane;
+    public GameObject inventoryUI;
+    public GameObject inGameUI;
     public PlayerInventory playerInventory;
 
     void Awake()
     {
 
         PlayerInventory.InventoryChange += UpdateInventoryList;
+
+    }
+
+    void Update()
+    {
+
+        if (Input.GetKeyDown(KeyCode.Tab))
+            ToggleVisibility();
 
     }
 
@@ -47,28 +57,6 @@ public class InventoryUI : MonoBehaviour
 
     }
 
-    /*void GenerateInventory()
-    {
-
-        displayObjects = new GameObject[UIInventory.Count];
-
-        int counter = 0;
-        foreach (KeyValuePair<Item, int> keyValue in UIInventory)
-        {
-
-            displayObjects[counter] = new GameObject();
-            InventoryItem displaySettings = displayObjects[counter].GetComponent<InventoryItem>();
-
-            displaySettings.SetDisplay(keyValue.Key, keyValue.Value * keyValue.Key.weight);
-
-            counter++;
-
-        }
-
-        DisplayInventory();
-
-    }*/
-
     void DisplayInventory()
     {
 
@@ -89,28 +77,18 @@ public class InventoryUI : MonoBehaviour
 
             invItem.SetDisplay(keyValue.Key, keyValue.Value * keyValue.Key.weight);
             int posY = -(50 + (60 * counter));
-            Debug.Log(posY);
             rect.anchoredPosition = new Vector2(rect.anchoredPosition.x, posY);
-            Debug.Log(counter + " " + rect.anchoredPosition.y);
             counter++;
 
         }
 
-        /*
-        foreach (Transform child in contentPane.transform) 
-        {
-            GameObject.Destroy(child.gameObject);
-        }
+    }
 
-        for (int i = 0; i < displayObjects.Length; i++)
-        {
-            
-            RectTransform rect = displayObjects[i].GetComponent<RectTransform>(); 
-            rect.anchoredPosition.Set(rect.anchoredPosition.x, -50 - (60 * i));
-            Instantiate(displayObjects[i], contentPane.transform);
+    void ToggleVisibility()
+    {
 
-        }
-        */
+        inventoryUI.SetActive(!inventoryUI.activeSelf);
+        inGameUI.SetActive(!inGameUI.activeSelf);
 
     }
 

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class HullUI : MonoBehaviour
 {
     private Slider hullBar;
+    public Text hullBarText;
     public PlayerVitals vitals;
 
     void Start()
@@ -22,6 +23,8 @@ public class HullUI : MonoBehaviour
 
         if (hullBar.value != vitals.HullStrength)
             hullBar.value = vitals.HullStrength;
+
+        hullBarText.text = vitals.HullStrength + "/" + vitals.MaxHullStrength;
 
     }
 }

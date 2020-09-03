@@ -7,6 +7,7 @@ public class FuelUI : MonoBehaviour
 {
     
     private Slider fuelBar;
+    public Text fuelBarText;
     public PlayerVitals vitals;
 
     void Start()
@@ -23,6 +24,8 @@ public class FuelUI : MonoBehaviour
 
         if (fuelBar.value != vitals.Fuel)
             fuelBar.value = vitals.Fuel;
+        
+        fuelBarText.text = vitals.Fuel + " kJ";
 
     }
 
